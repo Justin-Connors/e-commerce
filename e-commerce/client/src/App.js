@@ -12,6 +12,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
@@ -39,21 +40,29 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const darkTheme = createTheme({
+  palette: {
+    type: "dark",
+  },
+});
+
 function App() {
   return (
     <ApolloProvider client={client}>
-      <CssBaseline />
-      <Router>
-        <div>
-          <Nav />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home title="Home" />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Router>
+          <div>
+            <Nav />
+            <main>
+              <Routes>
+                <Route path="/" element={<Home title="Home" />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </ThemeProvider>
     </ApolloProvider>
   );
 }
