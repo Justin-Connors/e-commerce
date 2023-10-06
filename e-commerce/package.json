@@ -1,0 +1,26 @@
+{
+  "name": "e-comm",
+  "version": "1.0.0",
+  "description": "yee haw sell stuff",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server --ignore client",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "keywords": [],
+  "author": "Justin Connors",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "react-icons": "^4.9.0"
+  },
+  "engines": {
+    "node": "19.x"
+  },
+  "homepage": "./client/build"
+}
