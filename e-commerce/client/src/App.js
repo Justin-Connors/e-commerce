@@ -18,6 +18,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
 import Auth from "./utils/auth";
+import { CssBaseline } from "@material-ui/core";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -41,6 +42,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <CssBaseline />
       <Router>
         <div>
           <Nav />
