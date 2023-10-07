@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const loggedIn = false;
+
 export default function Nav() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -46,9 +48,13 @@ export default function Nav() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Imagine nav bar here
+            Wismazon
           </Typography>
-          <Button color="inherit">Login</Button>
+          {loggedIn ? (
+            <Button color="inherit">Logout</Button>
+          ) : (
+            <Button color="inherit">Login</Button>
+          )}
         </Toolbar>
       </AppBar>
       <SideBar open={open} onClose={handleDrawerClose} />
