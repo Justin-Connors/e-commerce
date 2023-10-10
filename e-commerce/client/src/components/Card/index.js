@@ -5,6 +5,7 @@ import {
   CardContent,
   CardMedia,
   Typography,
+  Button,
 } from "@mui/material";
 
 const product = {
@@ -21,19 +22,32 @@ const ProductCard = () => {
         <CardMedia
           component="img"
           alt={product.name}
-          height="140"
+          height="250px"
           image={product.image}
           title={product.name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="h2"
+            sx={{ textAlign: "center" }}
+          >
             {product.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary" component="p">
+          <Typography variant="body2" color="inherit" component="p">
             {product.description}
           </Typography>
-          <Typography variant="h6" color="text.primary" component="p">
+          <Typography
+            variant="h6"
+            color="inherit"
+            component="p"
+            sx={{ textAlign: "left" }}
+          >
             ${product.price}
+            <Button color="inherit" sx={{ position: "absolute", right: 7 }}>
+              Add to Card
+            </Button>
           </Typography>
         </CardContent>
       </CardActionArea>
