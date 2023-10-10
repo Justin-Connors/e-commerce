@@ -11,6 +11,16 @@ const typeDefs = gql`
     bannerUrl: String
   }
 
+  type Product {
+    _id: ID
+    name: String
+    price: Float
+    description: String
+    image: String
+    category: String
+    quantity: Int
+  }
+
   type Auth {
     token: ID
     user: User
@@ -19,7 +29,11 @@ const typeDefs = gql`
   type Query {
     user: User
     userById(userId: ID): User
-}
+    users: [User]
+    product: Product
+    productById(productId: ID): Product
+    products: [Product]
+  }
 
   type Mutation {
     addUser(
@@ -37,6 +51,22 @@ const typeDefs = gql`
       bannerUrl: String
     ): User
     login(email: String!, password: String!): Auth
+    addProduct(
+      name: String!
+      price: Float!
+      description: String!
+      image: String
+      category: String
+      quantity: Int
+    ): Product
+    updateProduct(
+      name: String
+      price: Float
+      description: String
+      image: String
+      category: String
+      quantity: Int
+    ): Product
   }
 `;
 
