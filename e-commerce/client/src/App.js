@@ -12,14 +12,12 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
 import Auth from "./utils/auth";
-import { CssBaseline } from "@material-ui/core";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -40,29 +38,20 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const darkTheme = createTheme({
-  palette: {
-    type: "dark",
-  },
-});
-
 function App() {
   return (
     <ApolloProvider client={client}>
-      <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
-        <Router>
-          <div>
-            <Nav />
-            <main>
-              <Routes>
-                <Route path="/" element={<Home title="Home" />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
-        </Router>
-      </ThemeProvider>
+      <Router>
+        <div>
+          <Nav />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home title="Home" />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
     </ApolloProvider>
   );
 }
