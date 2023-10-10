@@ -12,6 +12,9 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+//imports for MUI Theming
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
@@ -38,20 +41,37 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+//Dark Theme
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
+//Light Theme
+const lightTheme = createTheme({
+  palette: {
+    mode: "light",
+  },
+});
+
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <div>
-          <Nav />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home title="Home" />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Router>
+          <div>
+            <Nav />
+            <main>
+              <Routes>
+                <Route path="/" element={<Home title="Home" />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </ThemeProvider>
     </ApolloProvider>
   );
 }
