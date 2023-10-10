@@ -8,7 +8,16 @@ const Footer = () => {
   return (
     <Box
       color="inherit"
-      sx={{ p: 1, m: 0.125, position: "fixed", bottom: 0, width: "100%" }}
+      sx={{
+        p: 1,
+        mt: "auto",
+        position: "fixed",
+        bottom: 0,
+        width: "100%",
+        height: "2rem",
+        backgroundColor: "#292929",
+        layer: 1,
+      }}
       component="footer"
     >
       <Container maxWidth="sm">
