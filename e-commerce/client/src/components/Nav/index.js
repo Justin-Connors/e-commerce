@@ -12,11 +12,20 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { useNavigate } from "react-router-dom";
+import auth from "../../utils/auth";
 
 const pages = ["Categories", "New", "Deals"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Nav() {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    auth.logout();
+    navigate("/");
+  };
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -47,6 +56,7 @@ function Nav() {
             noWrap
             component="a"
             href="#app-bar-with-responsive-menu"
+            onClick={() => navigate("/")}
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -160,14 +170,20 @@ function Nav() {
             <Box>
               <Button
                 color="inherit"
-                onClick={handleCloseNavMenu}
+                onClick={() => {
+                  handleCloseNavMenu();
+                  navigate("/Login");
+                }}
                 sx={{ my: 2, mr: 2 }}
               >
                 Login
               </Button>
               <Button
                 color="inherit"
-                onClick={handleCloseNavMenu}
+                onClick={() => {
+                  handleCloseNavMenu();
+                  navigate("/Signup");
+                }}
                 sx={{ my: 2 }}
               >
                 Sign Up

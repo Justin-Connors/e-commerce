@@ -19,6 +19,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Home from "./pages/Home";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 import Auth from "./utils/auth";
 
@@ -66,6 +68,8 @@ function App() {
             <main>
               <Routes>
                 <Route path="/" element={<Home title="Home" />} />
+                <Route path="/login" element={<Login title="Login" />} />
+                <Route path="/signup" element={<Signup title="Signup" />} />
               </Routes>
             </main>
             <Footer />
