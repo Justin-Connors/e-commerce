@@ -40,10 +40,10 @@ function Signup(props) {
     }
   }, [formState]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const mutationResponse = addUser({
+      const mutationResponse = await addUser({
         variables: {
           firstName: formState.firstName,
           lastName: formState.lastName,
@@ -55,6 +55,12 @@ function Signup(props) {
       Auth.login(token);
     } catch (err) {
       console.error(err);
+      if (error.message.includes("duplicate key")) {
+        console.log(error, "Email error");
+      }
+      if (error.message.includes("password")) {
+        console.log(error, "Password error");
+      }
     }
   };
 
